@@ -1,20 +1,29 @@
 <!doctype html>
 <html>
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
-<style>
-  .font-signature {
-    font-family: 'Great Vibes', cursive;
-  }
-</style>
-<style>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+  <style>
+    .font-signature {
+      font-family: 'Great Vibes', cursive;
+    }
+  </style>
+  <style>
     @keyframes gradientPulse {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
+      0% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
+
+      100% {
+        background-position: 0% 50%;
+      }
     }
 
     .animate-gradient-circle {
@@ -23,369 +32,418 @@
     }
   </style>
   <style>
-@keyframes gradientMove {
-  0%, 100% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-}
+    @keyframes gradientMove {
 
-.gradient-animated-text {
-  background-size: 200% 200%;
-  animation: gradientMove 5s ease infinite;
-}
-</style>
-<style>
-@keyframes gradientPulse {
-  0%, 100% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-}
+      0%,
+      100% {
+        background-position: 0% 50%;
+      }
 
-.circle-glow {
-  background-size: 200% 200%;
-  animation: gradientPulse 5s ease infinite;
-}
-</style>
-<style>
-  html {
-    scroll-behavior: smooth;
-  }
-</style>
+      50% {
+        background-position: 100% 50%;
+      }
+    }
+
+    .gradient-animated-text {
+      background-size: 200% 200%;
+      animation: gradientMove 5s ease infinite;
+    }
+  </style>
+  <style>
+    @keyframes gradientPulse {
+
+      0%,
+      100% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
+    }
+
+    .circle-glow {
+      background-size: 200% 200%;
+      animation: gradientPulse 5s ease infinite;
+    }
+  </style>
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+  </style>
 
 
-  </head>
-  <body class="scroll-smooth">
- <!-- Alpine.js -->
-<script src="https://unpkg.com/alpinejs" defer></script>
+</head>
 
-<!-- Header Start -->
-<header class="bg-black text-white sticky top-0 z-50 shadow-md" x-data="{ expanded: false }">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6">
-    <div class="flex items-center justify-between">
+<body class="scroll-smooth">
+  <!-- Alpine.js -->
+  <script src="https://unpkg.com/alpinejs" defer></script>
 
-      <!-- Logo -->
-      <a href="#hero" class="flex items-center text-white font-medium">
-        <div class="w-10 h-10 bg-gradient-to-r from-purple-600 to-pink-500 rounded-full flex items-center justify-center font-bold text-xl">
-         M.A.N
+  <!-- Header Start -->
+  <header class="bg-black text-white sticky top-0 z-50 shadow-md" x-data="{ expanded: false }">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6">
+      <div class="flex items-center justify-between">
+
+        <!-- Logo -->
+        <a href="#hero" class="flex items-center text-white font-medium">
+          <div
+            class="w-10 h-10 bg-gradient-to-r from-purple-600 to-pink-500 rounded-full flex items-center justify-center font-bold text-xl">
+            M.A.N
+          </div>
+          <span class="ml-3 text-xl font-semibold"> Mohammad Ahsan Naseer</span>
+        </a>
+
+        <!-- Hamburger Icon -->
+        <div class="md:hidden">
+          <button @click="expanded = !expanded" class="focus:outline-none">
+            <span x-show="!expanded">
+              <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            </span>
+            <span x-show="expanded">
+              <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </span>
+          </button>
         </div>
-        <span class="ml-3 text-xl font-semibold">            Mohammad Ahsan Naseer</span>
-      </a>
 
-      <!-- Hamburger Icon -->
-      <div class="md:hidden">
-        <button @click="expanded = !expanded" class="focus:outline-none">
-          <span x-show="!expanded">
-            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16" />
+        <!-- Desktop Menu -->
+        <nav class="hidden md:flex space-x-8 text-sm font-medium">
+          <a href="#hero" class="text-gray-400 hover:text-white transition">Home</a>
+          <a href="#journey" class="text-gray-400 hover:text-white transition">My Journey</a>
+          <a href="#skills" class="text-gray-400 hover:text-white transition">Skills</a>
+          <a href="#about" class="text-gray-400 hover:text-white transition">About Me</a>
+          <a href="#projects" class="text-gray-400 hover:text-white transition">My Projects</a>
+          <a href="#certifications" class="text-gray-400 hover:text-white transition">Certifications</a>
+          <a href="#testimonials" class="text-gray-400 hover:text-white transition">Testimonials</a>
+          <a href="#contact" class="text-gray-400 hover:text-white transition">Get in Touch</a>
+          <a href="#start-project" class="text-gray-400 hover:text-white transition">Start a Project</a>
+          <a href="#footer" class="text-gray-400 hover:text-white transition">Find Us</a>
+        </nav>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div class="md:hidden mt-4" x-show="expanded" x-transition>
+        <nav class="flex flex-col space-y-4 text-sm font-medium">
+          <a href="#hero" class="text-gray-400 hover:text-white">Home</a>
+          <a href="#journey" class="text-gray-400 hover:text-white">My Journey</a>
+          <a href="#skills" class="text-gray-400 hover:text-white">Skills</a>
+          <a href="#about" class="text-gray-400 hover:text-white">About Me</a>
+          <a href="#projects" class="text-gray-400 hover:text-white transition">My Projects</a>
+          <a href="#certifications" class="text-gray-400 hover:text-white">Certifications</a>
+          <a href="#testimonials" class="text-gray-400 hover:text-white">Testimonials</a>
+          <a href="#contact" class="text-gray-400 hover:text-white">Get in Touch</a>
+          <a href="#start-project" class="text-gray-400 hover:text-white">Start a Project</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+  <!-- Header End -->
+
+  <!-- header end -->
+  <!-- hero start -->
+  <section id="hero" class="py-12 bg-black sm:pb-16 lg:pb-20 xl:pb-24">
+    <div class="px-4 mx-auto sm:px-6 lg:px-8 max-w-7xl">
+      <div class="relative">
+
+        <!-- Left Text Content -->
+        <div class="lg:w-2/3">
+          <p class="text-sm font-normal tracking-widest text-gray-300 uppercase">
+            Web Developer • UI Designer • Freelancer
+          </p>
+
+          <h1 class="mt-6 text-4xl font-semibold text-white sm:mt-10 sm:text-5xl lg:text-6xl xl:text-7xl leading-tight">
+            Hi, I'm <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-purple-500">Mohammad
+              Ahsan</span>
+          </h1>
+
+          <p class="max-w-lg mt-4 text-xl font-normal text-gray-400 sm:mt-8">
+            I help startups, agencies, and brands build responsive, fast, and clean websites using modern web
+            technologies.
+          </p>
+
+          <!-- CTA Button -->
+          <div class="relative inline-flex items-center justify-center mt-8 sm:mt-12 group">
+            <div
+              class="absolute transition-all duration-200 rounded-full -inset-px bg-gradient-to-r from-cyan-500 to-purple-500 group-hover:shadow-lg group-hover:shadow-cyan-500/50">
+            </div>
+            <a href="#projects"
+              class="relative inline-flex items-center justify-center px-8 py-3 text-base font-medium text-white bg-black border border-transparent rounded-full">
+              View My Work
+            </a>
+          </div>
+
+          <!-- Mini stat -->
+          <div class="inline-flex items-center pt-6 mt-8 border-t border-gray-800 sm:pt-10 sm:mt-14">
+            <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke-width="1.5" xmlns="http://www.w3.org/2000/svg">
+              <path d="M13 7.00003H21M21 7.00003V15M21 7.00003L13 15L9 11L3 17" stroke="url(#a)" stroke-linecap="round"
+                stroke-linejoin="round" />
+              <defs>
+                <linearGradient id="a" x1="3" y1="7.00003" x2="22.2956" y2="12.0274" gradientUnits="userSpaceOnUse">
+                  <stop offset="0%" stop-color="#06b6d4" />
+                  <stop offset="100%" stop-color="#a855f7" />
+                </linearGradient>
+              </defs>
             </svg>
-          </span>
-          <span x-show="expanded">
-            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-            </svg>
-          </span>
-        </button>
+
+            <span class="ml-2 text-base font-normal text-white">
+              Trusted by 20+ clients across Pakistan and beyond
+            </span>
+          </div>
+        </div>
+
+        <!-- Right Side Image -->
+        <div class="mt-8 md:absolute md:mt-0 md:top-32 lg:top-0 md:right-0">
+          <img class="w-full max-w-xs mx-auto lg:max-w-lg xl:max-w-xl"
+            src="/My pic.jpg"
+            alt="3D Developer Illustration" />
+        </div>
       </div>
-
-      <!-- Desktop Menu -->
-      <nav class="hidden md:flex space-x-8 text-sm font-medium">
-        <a href="#hero" class="text-gray-400 hover:text-white transition">Home</a>
-        <a  href="#journey" class="text-gray-400 hover:text-white transition">My Journey</a>
-        <a  href="#skills" class="text-gray-400 hover:text-white transition">Skills</a>
-        <a  href="#about" class="text-gray-400 hover:text-white transition">About Me</a>
-        <a  href="#projects" class="text-gray-400 hover:text-white transition">My Projects</a>
-        <a  href="#certifications" class="text-gray-400 hover:text-white transition">Certifications</a>
-        <a  href="#testimonials" class="text-gray-400 hover:text-white transition">Testimonials</a>
-        <a  href="#contact" class="text-gray-400 hover:text-white transition">Get in Touch</a>
-        <a  href="#start-project" class="text-gray-400 hover:text-white transition">Start a Project</a>
-         <a href="#footer" class="text-gray-400 hover:text-white transition">Find Us</a>
-      </nav>
     </div>
+  </section>
+  <!-- hero end -->
 
-    <!-- Mobile Menu -->
-    <div class="md:hidden mt-4" x-show="expanded" x-transition>
-      <nav class="flex flex-col space-y-4 text-sm font-medium">
-        <a  href="#hero" class="text-gray-400 hover:text-white">Home</a>
-        <a  href="#journey" class="text-gray-400 hover:text-white">My Journey</a>
-        <a  href="#skills" class="text-gray-400 hover:text-white">Skills</a>
-        <a  href="#about" class="text-gray-400 hover:text-white">About Me</a>
-        <a  href="#projects" class="text-gray-400 hover:text-white transition">My Projects</a>
-        <a  href="#certifications" class="text-gray-400 hover:text-white">Certifications</a>
-        <a  href="#testimonials" class="text-gray-400 hover:text-white">Testimonials</a>
-        <a  href="#contact" class="text-gray-400 hover:text-white">Get in Touch</a>
-        <a  href="#start-project" class="text-gray-400 hover:text-white">Start a Project</a>
-      </nav>
-    </div>
-  </div>
-</header>
-<!-- Header End -->
+  <!-- my journey -->
+  <section id="journey" class="py-10 bg-black sm:py-16 lg:py-24">
+    <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
 
-                                                            <!-- header end -->
-                                                             <!-- hero start -->
-<section id="hero" class="py-12 bg-black sm:pb-16 lg:pb-20 xl:pb-24">
-  <div class="px-4 mx-auto sm:px-6 lg:px-8 max-w-7xl">
-    <div class="relative">
-      
-      <!-- Left Text Content -->
-      <div class="lg:w-2/3">
-        <p class="text-sm font-normal tracking-widest text-gray-300 uppercase">
-          Web Developer • UI Designer • Freelancer
+      <!-- Section Heading -->
+      <div class="max-w-2xl mx-auto text-center">
+        <h2
+          class="text-3xl font-bold leading-tight text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-600 gradient-animated-text sm:text-4xl lg:text-5xl">
+          My Journey
+        </h2>
+
+        <p class="max-w-lg mx-auto mt-4 text-base leading-relaxed text-gray-300">
+          From self-learning to launching real-world web projects — here's how I grew as a developer.
         </p>
+      </div>
 
-        <h1 class="mt-6 text-4xl font-semibold text-white sm:mt-10 sm:text-5xl lg:text-6xl xl:text-7xl leading-tight">
-          Hi, I'm <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-purple-500">Mohammad Ahsan</span><br />
-          I Build Web <br> Experiences <br> That Work
-        </h1>
+      <!-- Timeline -->
+      <div class="relative mt-12 lg:mt-20">
+        <div class="absolute inset-x-0 hidden xl:px-44 top-2 md:block md:px-20 lg:px-28">
+          <img class="w-full"
+            src="https://cdn.rareblocks.xyz/collection/celebration/images/steps/2/curved-dotted-line.svg"
+            alt="Timeline" />
+        </div>
 
-        <p class="max-w-lg mt-4 text-xl font-normal text-gray-400 sm:mt-8">
-          I help startups, agencies, and brands build responsive, fast, and clean websites using modern web technologies.
+        <div class="relative grid grid-cols-1 text-center gap-y-12 md:grid-cols-3 gap-x-12">
+
+          <!-- Step 1 -->
+          <div>
+            <div class="flex items-center justify-center w-16 h-16 mx-auto rounded-full shadow-lg
+            bg-gradient-to-r from-cyan-500 to-purple-600 circle-glow border-2 border-transparent">
+              <span class="text-xl font-bold text-white">1</span>
+            </div>
+
+            <h3 class="mt-6 text-xl font-semibold leading-tight text-white md:mt-10">
+              Started Learning Web Development
+            </h3>
+            <p class="mt-4 text-base text-gray-400">
+              Began with HTML, CSS, and JavaScript. Built small UI components and explored frontend logic step-by-step.
+            </p>
+          </div>
+
+          <!-- Step 2 -->
+          <div>
+            <div class="flex items-center justify-center w-16 h-16 mx-auto rounded-full shadow-lg
+            bg-gradient-to-r from-cyan-500 to-purple-600 circle-glow border-2 border-transparent">
+              <span class="text-xl font-bold text-white">2</span>
+            </div>
+
+            <h3 class="mt-6 text-xl font-semibold leading-tight text-white md:mt-10">
+              Built Real Projects
+            </h3>
+            <p class="mt-4 text-base text-gray-400">
+              Created websites, dashboards, and landing pages using Tailwind CSS, React, and Firebase. Uploaded to
+              GitHub & Vercel.
+            </p>
+          </div>
+
+          <!-- Step 3 -->
+          <div>
+            <div class="flex items-center justify-center w-16 h-16 mx-auto rounded-full shadow-lg
+            bg-gradient-to-r from-cyan-500 to-purple-600 circle-glow border-2 border-transparent">
+              <span class="text-xl font-bold text-white">3</span>
+            </div>
+
+            <h3 class="mt-6 text-xl font-semibold leading-tight text-white md:mt-10">
+              Freelance & Portfolio Launch
+            </h3>
+            <p class="mt-4 text-base text-gray-400">
+              Started taking freelance projects. Designed and deployed this personal portfolio to showcase my skills and
+              journey.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- my journey -->
+
+  <!-- skills -->
+  <section id="skills" class="py-12 bg-black sm:py-16 lg:py-20">
+    <div class="px-4 mx-auto sm:px-6 lg:px-8 max-w-7xl">
+      <div class="max-w-md mx-auto text-center">
+        <h2
+          class="text-3xl font-bold leading-tight text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-600 gradient-animated-text sm:text-4xl lg:text-5xl">
+          My core skills</h2>
+        <p class="mt-4 text-base font-normal leading-7 text-gray-300">Technologies I specialize in — for building fast,
+          responsive, and modern web experiences.</p>
+      </div>
+
+      <div class="grid grid-cols-2 gap-6 mt-10 lg:mt-16 lg:gap-4 lg:grid-cols-4">
+        <!-- Skill 1 -->
+        <div class="relative group">
+          <div class="overflow-hidden aspect-w-1 aspect-h-1 bg-white p-4">
+            <img class="object-contain w-full h-full transition-all duration-300 group-hover:scale-110"
+              src="https://cdn-icons-png.flaticon.com/512/732/732212.png" alt="HTML5" />
+          </div>
+          <div class="flex flex-col mt-4">
+            <h3 class="text-sm font-bold text-white">HTML5</h3>
+            <p class="text-xs text-gray-400">Clean, semantic, SEO-friendly markup.</p>
+            <div class="flex mt-2 space-x-1">
+              <span class="text-yellow-400">★</span><span class="text-yellow-400">★</span><span
+                class="text-yellow-400">★</span><span class="text-yellow-400">★</span><span
+                class="text-gray-500">★</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Skill 2 -->
+        <div class="relative group">
+          <div class="overflow-hidden aspect-w-1 aspect-h-1 bg-white p-4">
+            <img class="object-contain w-full h-full transition-all duration-300 group-hover:scale-110"
+              src="https://cdn-icons-png.flaticon.com/512/732/732190.png" alt="CSS3" />
+          </div>
+          <div class="flex flex-col mt-4">
+            <h3 class="text-sm font-bold text-white">CSS3</h3>
+            <p class="text-xs text-gray-400">Responsive layouts, flexbox, and animations.</p>
+            <div class="flex mt-2 space-x-1">
+              <span class="text-yellow-400">★</span><span class="text-yellow-400">★</span><span
+                class="text-yellow-400">★</span><span class="text-yellow-400">★</span><span
+                class="text-gray-500">★</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Skill 3 -->
+        <div class="relative group">
+          <div class="overflow-hidden aspect-w-1 aspect-h-1 bg-white p-4">
+            <img class="object-contain w-full h-full transition-all duration-300 group-hover:scale-110"
+              src="https://cdn-icons-png.flaticon.com/512/5968/5968292.png" alt="JavaScript" />
+          </div>
+          <div class="flex flex-col mt-4">
+            <h3 class="text-sm font-bold text-white">JavaScript</h3>
+            <p class="text-xs text-gray-400">Interactive UIs and dynamic client-side logic.</p>
+            <div class="flex mt-2 space-x-1">
+              <span class="text-yellow-400">★</span><span class="text-yellow-400">★</span><span
+                class="text-yellow-400">★</span><span class="text-yellow-400">★</span><span
+                class="text-yellow-400">★</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Skill 4 -->
+        <div class="relative group">
+          <div class="overflow-hidden aspect-w-1 aspect-h-1 bg-white p-4">
+            <img class="object-contain w-full h-full transition-all duration-300 group-hover:scale-110"
+              src="https://cdn-icons-png.flaticon.com/512/1126/1126012.png" alt="React" />
+          </div>
+          <div class="flex flex-col mt-4">
+            <h3 class="text-sm font-bold text-white">React.js</h3>
+            <p class="text-xs text-gray-400">Component-based architecture & SPA logic.</p>
+            <div class="flex mt-2 space-x-1">
+              <span class="text-yellow-400">★</span><span class="text-yellow-400">★</span><span
+                class="text-yellow-400">★</span><span class="text-yellow-400">★</span><span
+                class="text-gray-500">★</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- skills end -->
+
+
+  <!-- about us -->
+  <section id="about" class="py-12 bg-gradient-to-b from-black via-[#0d021a] to-black text-white">
+    <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center">
+
+      <!-- Image -->
+      <div class="md:w-1/2 mb-8 md:mb-0">
+        <img src="/ChatGPT Image Nov 5, 2025, 01_12_55 PM.png" alt="Mohammad Ahsan" class="rounded-lg shadow-lg w-full">
+      </div>
+
+      <div class="md:w-1/2 md:pl-12">
+        <h2
+          class="text-3xl font-bold leading-tight text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-600 gradient-animated-text sm:text-4xl lg:text-5xl">
+          About Me
+        </h2>
+        <p class="text-lg mb-4">
+          I'm <strong>Mohammad Ahsan</strong>, a passionate Front-End Developer who loves turning ideas into reality
+          using code. I specialize in HTML, CSS, Tailwind, JavaScript, and React.
         </p>
-
-        <!-- CTA Button -->
-        <div class="relative inline-flex items-center justify-center mt-8 sm:mt-12 group">
-          <div class="absolute transition-all duration-200 rounded-full -inset-px bg-gradient-to-r from-cyan-500 to-purple-500 group-hover:shadow-lg group-hover:shadow-cyan-500/50"></div>
-          <a href="#projects"
-            class="relative inline-flex items-center justify-center px-8 py-3 text-base font-medium text-white bg-black border border-transparent rounded-full">
-            View My Work
-          </a>
-        </div>
-
-        <!-- Mini stat -->
-        <div class="inline-flex items-center pt-6 mt-8 border-t border-gray-800 sm:pt-10 sm:mt-14">
-          <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke-width="1.5" xmlns="http://www.w3.org/2000/svg">
-            <path d="M13 7.00003H21M21 7.00003V15M21 7.00003L13 15L9 11L3 17" stroke="url(#a)" stroke-linecap="round" stroke-linejoin="round" />
-            <defs>
-              <linearGradient id="a" x1="3" y1="7.00003" x2="22.2956" y2="12.0274" gradientUnits="userSpaceOnUse">
-                <stop offset="0%" stop-color="#06b6d4" />
-                <stop offset="100%" stop-color="#a855f7" />
-              </linearGradient>
-            </defs>
-          </svg>
-
-          <span class="ml-2 text-base font-normal text-white">
-            Trusted by 20+ clients across Pakistan and beyond
-          </span>
-        </div>
+        <p class="text-lg mb-4">
+          I enjoy building clean, modern, responsive websites and am always eager to learn and grow. Currently, I'm
+          learning backend technologies to become a Full Stack Developer.
+        </p>
+        <p class="text-lg">
+          I'm also intuducing my own ferm soon, the name is not decided yet, updates will be available soon, for kind
+          information.
+          Thank You for your support.
+        </p>
+        <a href="https://drive.google.com/file/d/1N4aSQlXG8dSSpQXNF9kzq0eVO8XTqtUs/view"
+          class="inline-block mt-4 px-6 py-2 bg-purple-600 text-white rounded hover:bg-purple-700 transition"
+          target="_blank">
+          Download Resume
+        </a>
       </div>
 
-      <!-- Right Side Image -->
-      <div class="mt-8 md:absolute md:mt-0 md:top-32 lg:top-0 md:right-0">
-        <img class="w-full max-w-xs mx-auto lg:max-w-lg xl:max-w-xl"
-          src="https://landingfoliocom.imgix.net/store/collection/dusk/images/hero/1/3d-illustration.png"
-          alt="3D Developer Illustration" />
-      </div>
     </div>
-  </div>
-</section>
-<!-- hero end -->
-
-                                                                         <!-- my journey -->
-<section id="journey" class="py-10 bg-black sm:py-16 lg:py-24">
-  <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
-    
-    <!-- Section Heading -->
-    <div class="max-w-2xl mx-auto text-center">
-      <h2 class="text-3xl font-bold leading-tight text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-600 gradient-animated-text sm:text-4xl lg:text-5xl">
-  My Journey
-</h2>
-
-      <p class="max-w-lg mx-auto mt-4 text-base leading-relaxed text-gray-300">
-        From self-learning to launching real-world web projects — here's how I grew as a developer.
-      </p>
-    </div>
-
-    <!-- Timeline -->
-    <div class="relative mt-12 lg:mt-20">
-      <div class="absolute inset-x-0 hidden xl:px-44 top-2 md:block md:px-20 lg:px-28">
-        <img class="w-full" src="https://cdn.rareblocks.xyz/collection/celebration/images/steps/2/curved-dotted-line.svg" alt="Timeline" />
+  </section>
+  <!-- about us end -->
+  <!-- projects -->
+  <!-- My Projects Start -->
+  <section id="projects" class="py-16 bg-[#111113] text-white">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-12">
+        <h2 class="text-4xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-600">
+          My Projects</h2>
+        <p class="text-gray-400 text-lg max-w-2xl mx-auto">
+          Here are some of the featured projects I've worked on — beautifully designed and functionally strong.
+        </p>
       </div>
 
-      <div class="relative grid grid-cols-1 text-center gap-y-12 md:grid-cols-3 gap-x-12">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-8">
+        <!-- Project 1 -->
+        <a href="https://teachablemachine.withgoogle.com/models/FtEtMVSL-/" target="_blank"
+          class="bg-[#1a1a1a] p-6 rounded-xl shadow-md hover:shadow-purple-500/30 transition duration-300">
+          <img src="https://lspector.github.io/tools/assets/images/24.jpeg" alt="Teachable Machine Project"
+            class="rounded-md mb-4 w-full h-48 object-cover">
+          <h3 class="text-xl font-semibold mb-2">Teachable Machine AI Model</h3>
+          <p class="text-gray-400 text-sm">An interactive machine learning project built with Google’s Teachable Machine
+            to classify images using webcam input.</p>
+        </a>
 
-        <!-- Step 1 -->
-        <div >
-        <div class="flex items-center justify-center w-16 h-16 mx-auto rounded-full shadow-lg
-            bg-gradient-to-r from-cyan-500 to-purple-600 circle-glow border-2 border-transparent">
-  <span class="text-xl font-bold text-white">1</span>
-</div>
+        <!-- Project 2 -->
+        <a href="https://saylani-registrationform-by-hadi.vercel.app/" target="_blank"
+          class="bg-[#1a1a1a] p-6 rounded-xl shadow-md hover:shadow-purple-500/30 transition duration-300">
+          <img src="https://student.saylaniwelfare.com/assets/logo.6lrMPvRL.png" alt="Saylani Registration Form"
+            class="rounded-md mb-4 w-full h-48 object-cover">
+          <h3 class="text-xl font-semibold mb-2">Saylani Registration Form</h3>
+          <p class="text-gray-400 text-sm">A responsive student registration form built with Tailwind CSS for Saylani
+            Welfare's online learning portal.</p>
+        </a>
 
-          <h3 class="mt-6 text-xl font-semibold leading-tight text-white md:mt-10">
-            Started Learning Web Development
-          </h3>
-          <p class="mt-4 text-base text-gray-400">
-            Began with HTML, CSS, and JavaScript. Built small UI components and explored frontend logic step-by-step.
-          </p>
-        </div>
-
-        <!-- Step 2 -->
-        <div>
-          <div class="flex items-center justify-center w-16 h-16 mx-auto rounded-full shadow-lg
-            bg-gradient-to-r from-cyan-500 to-purple-600 circle-glow border-2 border-transparent">
-  <span class="text-xl font-bold text-white">2</span>
-</div>
-
-          <h3 class="mt-6 text-xl font-semibold leading-tight text-white md:mt-10">
-            Built Real Projects
-          </h3>
-          <p class="mt-4 text-base text-gray-400">
-            Created websites, dashboards, and landing pages using Tailwind CSS, React, and Firebase. Uploaded to GitHub & Vercel.
-          </p>
-        </div>
-
-        <!-- Step 3 -->
-        <div>
-          <div class="flex items-center justify-center w-16 h-16 mx-auto rounded-full shadow-lg
-            bg-gradient-to-r from-cyan-500 to-purple-600 circle-glow border-2 border-transparent">
-  <span class="text-xl font-bold text-white">3</span>
-</div>
-
-          <h3 class="mt-6 text-xl font-semibold leading-tight text-white md:mt-10">
-            Freelance & Portfolio Launch
-          </h3>
-          <p class="mt-4 text-base text-gray-400">
-            Started taking freelance projects. Designed and deployed this personal portfolio to showcase my skills and journey.
-          </p>
-        </div>
-
-      </div>
-    </div>
-  </div>
-</section>
-<!-- my journey -->
-
-                                                                             <!-- skills -->
-<section id="skills" class="py-12 bg-black sm:py-16 lg:py-20">
-  <div class="px-4 mx-auto sm:px-6 lg:px-8 max-w-7xl">
-    <div class="max-w-md mx-auto text-center">
-      <h2 class="text-3xl font-bold leading-tight text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-600 gradient-animated-text sm:text-4xl lg:text-5xl">
-  My core skills</h2>
-      <p class="mt-4 text-base font-normal leading-7 text-gray-300">Technologies I specialize in — for building fast, responsive, and modern web experiences.</p>
-    </div>
-
-    <div class="grid grid-cols-2 gap-6 mt-10 lg:mt-16 lg:gap-4 lg:grid-cols-4">
-      <!-- Skill 1 -->
-      <div class="relative group">
-        <div class="overflow-hidden aspect-w-1 aspect-h-1 bg-white p-4">
-          <img class="object-contain w-full h-full transition-all duration-300 group-hover:scale-110" src="https://cdn-icons-png.flaticon.com/512/732/732212.png" alt="HTML5" />
-        </div>
-        <div class="flex flex-col mt-4">
-          <h3 class="text-sm font-bold text-white">HTML5</h3>
-          <p class="text-xs text-gray-400">Clean, semantic, SEO-friendly markup.</p>
-          <div class="flex mt-2 space-x-1">
-            <span class="text-yellow-400">★</span><span class="text-yellow-400">★</span><span class="text-yellow-400">★</span><span class="text-yellow-400">★</span><span class="text-gray-500">★</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Skill 2 -->
-      <div class="relative group">
-        <div class="overflow-hidden aspect-w-1 aspect-h-1 bg-white p-4">
-          <img class="object-contain w-full h-full transition-all duration-300 group-hover:scale-110" src="https://cdn-icons-png.flaticon.com/512/732/732190.png" alt="CSS3" />
-        </div>
-        <div class="flex flex-col mt-4">
-          <h3 class="text-sm font-bold text-white">CSS3</h3>
-          <p class="text-xs text-gray-400">Responsive layouts, flexbox, and animations.</p>
-          <div class="flex mt-2 space-x-1">
-            <span class="text-yellow-400">★</span><span class="text-yellow-400">★</span><span class="text-yellow-400">★</span><span class="text-yellow-400">★</span><span class="text-gray-500">★</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Skill 3 -->
-      <div class="relative group">
-        <div class="overflow-hidden aspect-w-1 aspect-h-1 bg-white p-4">
-          <img class="object-contain w-full h-full transition-all duration-300 group-hover:scale-110" src="https://cdn-icons-png.flaticon.com/512/5968/5968292.png" alt="JavaScript" />
-        </div>
-        <div class="flex flex-col mt-4">
-          <h3 class="text-sm font-bold text-white">JavaScript</h3>
-          <p class="text-xs text-gray-400">Interactive UIs and dynamic client-side logic.</p>
-          <div class="flex mt-2 space-x-1">
-            <span class="text-yellow-400">★</span><span class="text-yellow-400">★</span><span class="text-yellow-400">★</span><span class="text-yellow-400">★</span><span class="text-yellow-400">★</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Skill 4 -->
-      <div class="relative group">
-        <div class="overflow-hidden aspect-w-1 aspect-h-1 bg-white p-4">
-          <img class="object-contain w-full h-full transition-all duration-300 group-hover:scale-110" src="https://cdn-icons-png.flaticon.com/512/1126/1126012.png" alt="React" />
-        </div>
-        <div class="flex flex-col mt-4">
-          <h3 class="text-sm font-bold text-white">React.js</h3>
-          <p class="text-xs text-gray-400">Component-based architecture & SPA logic.</p>
-          <div class="flex mt-2 space-x-1">
-            <span class="text-yellow-400">★</span><span class="text-yellow-400">★</span><span class="text-yellow-400">★</span><span class="text-yellow-400">★</span><span class="text-gray-500">★</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-                                                                                   <!-- skills end -->
-
-
-                                                                                <!-- about us -->
-<section id="about" class="py-12 bg-gradient-to-b from-black via-[#0d021a] to-black text-white">
-  <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center">
-    
-    <!-- Image -->
-    <div class="md:w-1/2 mb-8 md:mb-0">
-      <img src="/ChatGPT Image Nov 5, 2025, 01_12_55 PM.png" alt="Mohammad Ahsan" class="rounded-lg shadow-lg w-full">
-    </div>
-    
-    <div class="md:w-1/2 md:pl-12">
-  <h2 class="text-3xl font-bold leading-tight text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-600 gradient-animated-text sm:text-4xl lg:text-5xl">
-    About Me
-  </h2>
-  <p class="text-lg mb-4">
-    I'm <strong>Mohammad Ahsan</strong>, a passionate Front-End Developer who loves turning ideas into reality using code. I specialize in HTML, CSS, Tailwind, JavaScript, and React.
-  </p>
-  <p class="text-lg mb-4">
-    I enjoy building clean, modern, responsive websites and am always eager to learn and grow. Currently, I'm learning backend technologies to become a Full Stack Developer.
-  </p>
-  <p class="text-lg">
-    I'm also intuducing my own ferm soon, the name is not decided yet, updates will be available soon, for kind information. 
-    Thank You for your support.
-  </p>
-      <a href="https://drive.google.com/file/d/1N4aSQlXG8dSSpQXNF9kzq0eVO8XTqtUs/view" class="inline-block mt-4 px-6 py-2 bg-purple-600 text-white rounded hover:bg-purple-700 transition" target="_blank">
-        Download Resume
-      </a>
-    </div>
-
-  </div>
-</section>
-                                                                          <!-- about us end -->
-                                                                           <!-- projects -->
-<!-- My Projects Start -->
-<section id="projects" class="py-16 bg-[#111113] text-white">
-  <div class="max-w-7xl mx-auto px-6">
-    <div class="text-center mb-12">
-      <h2 class="text-4xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-600">My Projects</h2>
-      <p class="text-gray-400 text-lg max-w-2xl mx-auto">
-        Here are some of the featured projects I've worked on — beautifully designed and functionally strong.
-      </p>
-    </div>
-
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-8">
-      <!-- Project 1 -->
-<a href="https://teachablemachine.withgoogle.com/models/FtEtMVSL-/" target="_blank" class="bg-[#1a1a1a] p-6 rounded-xl shadow-md hover:shadow-purple-500/30 transition duration-300">
-  <img src="https://lspector.github.io/tools/assets/images/24.jpeg" alt="Teachable Machine Project" class="rounded-md mb-4 w-full h-48 object-cover">
-  <h3 class="text-xl font-semibold mb-2">Teachable Machine AI Model</h3>
-  <p class="text-gray-400 text-sm">An interactive machine learning project built with Google’s Teachable Machine to classify images using webcam input.</p>
-</a>
-
-<!-- Project 2 -->
-<a href="https://saylani-registrationform-by-hadi.vercel.app/" target="_blank" class="bg-[#1a1a1a] p-6 rounded-xl shadow-md hover:shadow-purple-500/30 transition duration-300">
-  <img src="https://student.saylaniwelfare.com/assets/logo.6lrMPvRL.png" alt="Saylani Registration Form" class="rounded-md mb-4 w-full h-48 object-cover">
-  <h3 class="text-xl font-semibold mb-2">Saylani Registration Form</h3>
-  <p class="text-gray-400 text-sm">A responsive student registration form built with Tailwind CSS for Saylani Welfare's online learning portal.</p>
-</a>
-
-<!-- My Projects End -->
+        <!-- My Projects End -->
 
 
 
-  </body>
+</body>
+
 </html>
